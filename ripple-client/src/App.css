@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+.App {
+  text-align: center;
+  direction: rtl;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #ffffff;
+  /*min-height: 100vh;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.label {
+  height: 168px;
+  width: 269px;
+}
+
+.label .text-wrapper {
+  color: #393938;
+  direction: rtl;
+  font-family: "Suez One-Regular", Helvetica;
+  font-size: 56px;
+  font-weight: 400;
+  height: 168px;
+  left: 0;
+  letter-spacing: -1.5px;
+  line-height: 56px;
+  position: fixed;
+  top: 0;
+  width: 269px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
