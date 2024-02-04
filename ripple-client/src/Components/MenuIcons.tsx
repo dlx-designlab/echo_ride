@@ -1,15 +1,6 @@
 import * as React from 'react';
-import {Grid, ImageList, ImageListItem, ImageListItemBar} from "@mui/material";
-import {ECategory, getCategoryAnimation, getCategoryIcon, getCategoryText} from "../Types/ECategory";
-import {Link} from "react-router-dom";
-import {center} from "./MenuPage";
-import MenuButton, {iconSize} from "./MenuButton";
-
-const imageStyle = {
-    width: '50%',
-    position: 'absolute',
-    // height: '30vh'
-} as React.CSSProperties;
+import {Grid} from "@mui/material";
+import MenuButton from "./MenuButton";
 
 const MenuIcons = () => {
     return (
@@ -33,19 +24,6 @@ const MenuIcons = () => {
                 <MenuButton category={'ride'} style={{marginRight: '-5vh', marginLeft: '5vh', marginTop: '-5vh'}}/>
             </Grid>
         </Grid>
-        // <ImageList variant="masonry" cols={3} gap={8}>
-        //     {ECategory.map((item) => (
-        //         <ImageListItem key={getCategoryIcon(item)}>
-        //             <img style={iconSize}
-        //                 srcSet={`${getCategoryIcon(item)}?w=248&fit=resize&auto=format&dpr=2 2x`}
-        //                 src={`${getCategoryIcon(item)}?w=248&fit=resize&auto=format`}
-        //                 alt={getCategoryIcon(item)}
-        //                 loading="lazy"
-        //             />
-        //             <ImageListItemBar position="below" title={getCategoryText(item)} />
-        //         </ImageListItem>
-        //     ))}
-        // </ImageList>
     );
 };
 export default MenuIcons;

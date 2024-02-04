@@ -4,9 +4,9 @@ import React, {useState, useEffect} from 'react';
 import {ECategory} from "./Types/ECategory";
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 import MenuPage from "./Components/MenuPage";
+import ResultsAvgPage from "./Components/ResultsAvgPage";
 // import ip from "./ip"
 
-const ip = 'localhost';
 
 const App = () => {
         return (
@@ -15,9 +15,10 @@ const App = () => {
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<MenuPage/>}/>
-                            {ip && ECategory.map((category) => {
+                            <Route path="/results" element={<ResultsAvgPage />}/>
+                            {ECategory.map((category) => {
                                 return <Route path={`/${category}`} key={category}
-                                              element={<VotePage category={category} ip={ip} />}/>
+                                              element={<VotePage category={category} />}/>
                             })}
                         </Routes>
                     </BrowserRouter>

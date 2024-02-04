@@ -1,17 +1,9 @@
 import {getCategoryIcon, getCategoryText} from "../Types/ECategory";
 import {Link} from "react-router-dom";
 import * as React from "react";
-import {Stack, Typography} from "@mui/material";
-import {fadeInUp, subHeader, text} from "./MenuPage";
+import {fadeInUp, iconSize} from "../Types/Styles";
 
-export const iconSize = {
-    width: '100%',
-    maxWidth: '120%',
-    maxHeight: '20vh',
-    minHeight: '15vh',
-    minWidth: '90%',
-    // height: '120%'
-} as React.CSSProperties;
+
 
 const MenuButton = ({category, style}: { category: string, style?: any }) => {
     return (

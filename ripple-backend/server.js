@@ -36,6 +36,20 @@ app.get('/all', (req, res) => {
 
 })
 
+app.get('/avg', (req, res) => {
+    const getAll = `SELECT AVG(vote) FROM ${req.query.category}`;
+
+    db.all(getAll, (err, rows) => {
+        if (err) {
+            console.error('Error querying:', err.message);
+            rows = [];
+        }
+        console.log(rows[0]['AVG(vote)']);
+        res.send(JSON.stringify(rows[0]['AVG(vote)']));
+    });
+
+})
+
 // app.get('/add', (req, res) => {
 //     const insertUser = db.prepare('INSERT INTO users (username, email) VALUES (?, ?)');
 //     const userData = ['john_doe', 'john@example.com'];

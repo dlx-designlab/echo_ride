@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import {useEffect, useRef, useState} from "react";
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
 import {getCategoryAnimation, getCategoryRange, getCategoryText} from "../Types/ECategory";
-import {center, fadeIn, fadeInUp, pageHeader, subHeader, text} from "./MenuPage";
 import {ArrowForward} from "@mui/icons-material";
+import {center, fadeIn, fadeInUp, pageHeader, text} from "../Types/Styles";
+import {url} from "../Types/Consts";
 
-interface voteProps {
+export interface voteProps {
     id: string;
     vote?: number;
     last_updated?: string;
@@ -15,7 +16,7 @@ interface voteProps {
 
 // const url = 'http://192.168.0.111:3001/';
 // const url = getLocalIp();
-const VotePage = ({category, ip}: { category: string, ip: string}) => {
+const VotePage = ({category}: { category: string}) => {
     const [value, setValue] = React.useState(50);
     const [table, setTable] = useState<voteProps[]>([]);
     const [message, setMessage] = useState('');
@@ -24,11 +25,11 @@ const VotePage = ({category, ip}: { category: string, ip: string}) => {
 
     const lottieRef = useRef<LottieRefCurrentProps>(null);
 
-    const url = 'http://' + ip + ':3001/';
+
     const navigate = useNavigate();
     useEffect(() => {
-        updateTable().then();
-        lottieRef.current?.setSpeed(3);
+        // updateTable().then();
+        lottieRef.current?.setSpeed(5);
         lottieRef.current?.playSegments([[0,100],[99,50]])
     }, []);
 
@@ -45,7 +46,7 @@ const VotePage = ({category, ip}: { category: string, ip: string}) => {
             try {
                 await createTable();
                 await vote();
-                await updateTable();
+                // await updateTable();
                 setMessage('Voted succeeded: ' + value);
                 handleReturn();
             } catch (error) {
@@ -55,11 +56,11 @@ const VotePage = ({category, ip}: { category: string, ip: string}) => {
         fetchData();
     };
 
-    const updateTable = async () => {
-        const response = await fetch(url + `all?category=${category}`);
-        const jsonData = await response.json();
-        setTable(jsonData);
-    };
+    // const updateTable = async () => {
+    //     const response = await fetch(url + `all?category=${category}`);
+    //     const jsonData = await response.json();
+    //     setTable(jsonData);
+    // };
 
     const createTable = async () => {
         await fetch(url + 'new', {
@@ -98,7 +99,7 @@ const VotePage = ({category, ip}: { category: string, ip: string}) => {
                 }}>{getCategoryText(category)}</Typography>
 
                 <Stack direction={"row"}
-                       style={{...text, ...center, width: '80vh%', margin: '2vh', marginTop: '10vh', color: '#C9C9C9'}}>
+                       style={{...text, ...center, width: '80vh%', margin: '2vh', marginTop: '10vh', color: '#C9C9C9', whiteSpace: 'nowrap'}}>
                     {getCategoryRange(category)[1]}
                     <Slider value={value} onChange={handleChange} track={false} style={{marginRight: '3vh', marginLeft: '3vh'}}
                             sx={{
