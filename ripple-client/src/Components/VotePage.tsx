@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Icon, IconButton, Slider, Stack, Typography} from "@mui/material";
+import {Button, IconButton, Slider, Stack, Typography} from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useRef, useState} from "react";
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
@@ -18,8 +18,6 @@ export interface voteProps {
 // const url = getLocalIp();
 const VotePage = ({category}: { category: string}) => {
     const [value, setValue] = React.useState(50);
-    const [table, setTable] = useState<voteProps[]>([]);
-    const [message, setMessage] = useState('');
     const [frames, setFrames] = useState<[number, number]>([0, 1]);
 
 
@@ -28,14 +26,12 @@ const VotePage = ({category}: { category: string}) => {
 
     const navigate = useNavigate();
     useEffect(() => {
-        // updateTable().then();
         lottieRef.current?.setSpeed(5);
         lottieRef.current?.playSegments([[0,100],[99,50]])
     }, []);
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         setValue(newValue as number);
-        const framesNum = lottieRef.current?.getDuration(true);
         setFrames([value, value + 1]);
     };
     const handleReturn = () => {
@@ -46,21 +42,15 @@ const VotePage = ({category}: { category: string}) => {
             try {
                 await createTable();
                 await vote();
-                // await updateTable();
                 setMessage('Voted succeeded: ' + value);
-                handleReturn();
+                navigate('/finish');
             } catch (error) {
                 setMessage('Could not vote: ' + error);
             }
         };
         fetchData();
+        navigate('/finish');
     };
-
-    // const updateTable = async () => {
-    //     const response = await fetch(url + `all?category=${category}`);
-    //     const jsonData = await response.json();
-    //     setTable(jsonData);
-    // };
 
     const createTable = async () => {
         await fetch(url + 'new', {
@@ -104,7 +94,6 @@ const VotePage = ({category}: { category: string}) => {
                     <Slider value={value} onChange={handleChange} track={false} style={{marginRight: '3vh', marginLeft: '3vh'}}
                             sx={{
                                 '& .MuiSlider-thumb': {color: "#C9C9C9"},
-                                // '& .MuiSlider-track': {color: "#C9C9C9"},
                                 '& .MuiSlider-rail': {color: '#C9C9C9'},
                                 '& .MuiSlider-active': {color: "#C9C9C9"}
                             }}/>
@@ -112,17 +101,13 @@ const VotePage = ({category}: { category: string}) => {
                 </Stack>
 
             </Stack>
-            <div style={{position: 'absolute', bottom: '10vh', right:'0', left: '0', maxWidth: '100%', maxHeight: '50vh', ...fadeInUp(1)}}>
+            <div style={{position: 'absolute', bottom: '0', right:'0', left: '0', ...fadeInUp(1)}}>
               <Lottie lottieRef={lottieRef} animationData={getCategoryAnimation(category) }
                                                          initialSegment={frames} autoplay={false} loop={false}
-              style={{position:'absolute',bottom: '0', maxHeight:'50vh'}}/>
+              style={{position:'absolute',bottom: '0', width:'100%', height:'70vh'}}/>
                 <Button onClick={handleSubmit} variant="contained"
-                        sx={{borderRadius: 28, width: '70%', ...text}}>שתף</Button>
+                        sx={{borderRadius: 28, width: '70%', ...text, bottom:'10vh'}}>שתף</Button>
             </div>
-            {/*<p>{message}</p>*/}
-            {/*{table.map((t) => {*/}
-            {/*    return <p key={t.id}>{t.id + ':' + t.vote}</p>*/}
-            {/*})}*/}
         </div>
     );
 

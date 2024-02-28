@@ -1,11 +1,12 @@
 import VotePage from './Components/VotePage';
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {ECategory} from "./Types/ECategory";
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 import MenuPage from "./Components/MenuPage";
 import ResultsAvgPage from "./Components/ResultsAvgPage";
-// import ip from "./ip"
+import FinishPage from "./Components/FinishPage";
+import ResultsBubblesPage from "./Components/ResultsBubblesPage";
 
 
 const App = () => {
@@ -15,7 +16,9 @@ const App = () => {
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<MenuPage/>}/>
+                            <Route path="/finish" element={<FinishPage/>}/>
                             <Route path="/results" element={<ResultsAvgPage />}/>
+                            <Route path="/bubblesResults" element={<ResultsBubblesPage />}/>
                             {ECategory.map((category) => {
                                 return <Route path={`/${category}`} key={category}
                                               element={<VotePage category={category} />}/>

@@ -10,8 +10,12 @@ app.set('trust proxy', true)
 
 var cors = require('cors');
 
+let bubbles = [];
+const clients = [];
+
+
 // use it before all route definitions
-// app.use(cors({origin: 'http://127.0.0.1:3001'}));
+// app.use(cors({origin: 'http://127.0.0.107:3001'}));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -31,7 +35,9 @@ app.get('/all', (req, res) => {
             console.error('Error querying:', err.message);
             rows = [];
         }
-        res.send(JSON.stringify(rows));
+        // console.log(rows);
+        const newRows = rows.map((row) => {return {...row, "category": req.query.category}});
+        res.send(JSON.stringify(newRows));
     });
 
 })
@@ -44,30 +50,15 @@ app.get('/avg', (req, res) => {
             console.error('Error querying:', err.message);
             rows = [];
         }
-        console.log(rows[0]['AVG(vote)']);
         res.send(JSON.stringify(rows[0]['AVG(vote)']));
     });
 
 })
 
-// app.get('/add', (req, res) => {
-//     const insertUser = db.prepare('INSERT INTO users (username, email) VALUES (?, ?)');
-//     const userData = ['john_doe', 'john@example.com'];
-//
-//     insertUser.run(userData, (err) => {
-//         if (err) {
-//             res.send('Error inserting user:');
-//         } else {
-//             res.send('User inserted successfully!');
-//         }
-//     });
-//
-//     insertUser.finalize();
-// })
-
 app.post('/vote', (req, res) => {
     data = req.body;
 
+    console.log('voted');
     const vote = db.prepare(`INSERT OR REPLACE INTO ${data.category} (id, vote)
                             VALUES (?,?);`);
     const voteData = [req.ip, data.vote];
@@ -76,9 +67,16 @@ app.post('/vote', (req, res) => {
         if (err) {
             res.send('Error voting: ' + err.message);
         } else {
+            clients.forEach(client => {
+                console.log(data)
+                client.write(`data: ${JSON.stringify(data)}\n\n`);
+                client.flushHeaders();
+            });
+
             res.send('vote added: ' + data.toString());
         }
     });
+
 
     vote.finalize();
 });
@@ -111,6 +109,61 @@ app.post('/new', (req, res) => {
     });
 
 });
+
+
+app.get('/sse', (req, res) => {
+
+
+    res.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+        'Access-Control-Allow-Origin': '*'
+    });
+
+    // Store the client's response object
+    clients.push(res);
+
+    console.log('connected via sse');
+    // console.log(clients);
+
+    // const intervalId = setInterval(() => {
+    //     res.write(`data: ${JSON.stringify('sent')}\n\n`);
+    //     console.log('sent');
+    // }, 5000);
+    //
+    // req.on('close', () => {
+    //     clearInterval(intervalId);
+    // });
+
+    // Remove the client when the connection is closed
+    req.on('close', () => {
+        console.log('disconnected via sse');
+        const index = clients.indexOf(res);
+        if (index !== -1) {
+            clients.splice(index, 1);
+        }
+    });
+});
+
+// app.get('/sse', (req, res) => {
+//     res.writeHead(200, {
+//         'Content-Type': 'text/event-stream',
+//         'Cache-Control': 'no-cache',
+//         'Connection': 'keep-alive',
+//         'Access-Control-Allow-Origin': '*'
+//     });
+//
+//     let count = -1;
+//     const intervalId = setInterval(() => {
+//         count += 1;
+//         res.write(`data: ${JSON.stringify(sensors[count])}\n\n`);
+//     }, 10);
+//
+//     req.on('close', () => {
+//         clearInterval(intervalId);
+//     });
+// });
 
 // app.get('/remove', (req, res) => {
 //     const createTableQuery = `
