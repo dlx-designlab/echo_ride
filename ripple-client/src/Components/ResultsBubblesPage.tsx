@@ -3,9 +3,17 @@ import {url} from "../Types/Consts";
 import {useEffect, useState} from "react";
 import {ECategory, getCategoryCenter, getCategoryIcon, getCategorySliderColor} from "../Types/ECategory";
 import {Stack, Typography} from "@mui/material";
-import {center, fadeIn, pageHeader, resultsHeader, subHeader} from "../Types/Styles";
+import {center, resultsHeader, subHeader} from "../Types/Styles";
 import OldBubbles from "./OldBubbles";
-import  {IBubble} from "./Bubble";
+
+export interface IBubble {
+    x: number;
+    y: number;
+    radius: number;
+    color: string;
+    name: string;
+    image: string;
+}
 
 const generateKey = () => {
     return (Date.now() + Math.random() * 10).toString();

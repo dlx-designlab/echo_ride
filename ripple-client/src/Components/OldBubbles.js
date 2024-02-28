@@ -2,6 +2,7 @@ import React, { useEffect, useRef} from 'react';
 import * as d3 from 'd3';
 import './Bubbles.css';
 
+
 // @ts-ignore
 const OldBubbles = ({ data }) => {
     const svgRef = useRef();

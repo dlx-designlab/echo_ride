@@ -8,14 +8,7 @@ const db = new sqlite3.Database('ripple.db');
 app.use(express.json());
 app.set('trust proxy', true)
 
-var cors = require('cors');
-
-let bubbles = [];
 const clients = [];
-
-
-// use it before all route definitions
-// app.use(cors({origin: 'http://127.0.0.107:3001'}));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {url} from "../Types/Consts";
 import {useEffect, useState} from "react";
-import {voteProps} from "./VotePage";
 import {ECategory} from "../Types/ECategory";
 import VoteAvg from "./VoteAvg";
 import {Stack, Typography} from "@mui/material";

@@ -2,7 +2,7 @@ import VotePage from './Components/VotePage';
 import './App.css';
 import React from 'react';
 import {ECategory} from "./Types/ECategory";
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import MenuPage from "./Components/MenuPage";
 import ResultsAvgPage from "./Components/ResultsAvgPage";
 import FinishPage from "./Components/FinishPage";
