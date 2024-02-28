@@ -102,7 +102,7 @@ const ResultsBubblesPage = () => {
 
     return (
         <div>
-        <OldBubbles data={bubblesList} newBubble={{}}/>
+        <OldBubbles data={bubblesList}/>
 
         <Stack style={{ position:'absolute', right:'0', left: '0', top:'0', width: '100%', ...gradientStyle}}>
 

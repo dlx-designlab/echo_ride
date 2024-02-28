@@ -23,7 +23,6 @@ const VotePage = ({category}: { category: string}) => {
 
     const lottieRef = useRef<LottieRefCurrentProps>(null);
 
-
     const navigate = useNavigate();
     useEffect(() => {
         lottieRef.current?.setSpeed(5);
@@ -42,10 +41,9 @@ const VotePage = ({category}: { category: string}) => {
             try {
                 await createTable();
                 await vote();
-                setMessage('Voted succeeded: ' + value);
                 navigate('/finish');
             } catch (error) {
-                setMessage('Could not vote: ' + error);
+                console.log('Could not vote: ' + error);
             }
         };
         fetchData();

@@ -22,7 +22,6 @@ const ResultsAvgPage = () => {
 
         votes = {...votes, [category]:Math.round(jsonData)};
         setData(votes);
-        setTable(jsonData);
     };
 
     return (
