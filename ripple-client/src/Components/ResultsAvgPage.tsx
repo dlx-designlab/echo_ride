@@ -8,12 +8,29 @@ import {center, fadeIn, resultsHeader, subHeader} from "../Types/Styles";
 
 const ResultsAvgPage = () => {
     const [data, setData] = useState({});
+    const [date, setDate] = useState('');
+    const [busNumber, setBusNumber] = useState(5);
     let votes = {};
 
     useEffect(() => {
         ECategory.map((category) => {
             updateTable(category).then();
         })
+
+        const currentDate = new Date();
+
+        const daysOfWeek = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'];
+
+        const dayOfWeek = daysOfWeek[currentDate.getDay()];
+        const date = currentDate.getDate();
+        const month = currentDate.getMonth() + 1;
+        const hour = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+
+        const formattedDate = ` יום ${dayOfWeek}', ${date}.${month}, ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
+
+        setDate(formattedDate);
+        console.log(formattedDate);
     }, []);
 
     const updateTable = async (category: string) => {
@@ -27,10 +44,10 @@ const ResultsAvgPage = () => {
     return (
         <Stack style={{ position:'absolute', right:'0', left: '0', top:'0', width: '100%', height:'100%', ...fadeIn(0.5), background:'black'}}>
         <Typography style={{...subHeader,...center, marginTop:'0'}}>
-            חווית הנסיעה, קו 5
+            חווית הנסיעה, קו {busNumber}
         </Typography>
         <Typography style={{...resultsHeader,...center}}>
-            יום א', 3.2, 10:23
+            {date}
         </Typography>
         <div style={{position:'relative', top:'10vh'}}>
         {Object.entries(data).map(([key, value]) => {

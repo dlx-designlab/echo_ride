@@ -35,7 +35,10 @@ const ResultsBubblesPage = () => {
             const data = JSON.parse(event.data);
             const newBubble = getNewBubble(data);
             if(!newBubble) return;
-            votesList = [...votesList, newBubble];
+            let bubbleToUpdate = votesList.find((b)=>b.name = data.category + data.id);
+            console.log(bubbleToUpdate);
+            if(bubbleToUpdate) bubbleToUpdate.radius = (data.vote - 50) / 50;
+            else votesList = [...votesList, newBubble];
             setBubblesList(votesList);
 
         };
@@ -70,6 +73,8 @@ const ResultsBubblesPage = () => {
             votesList = [...votesList, emptyBubble];
             setBubblesList(votesList);
 
+
+
         };
 
         const intervalId = setInterval(yourFunction, 5000); // 10000 milliseconds = 10 seconds
@@ -77,11 +82,11 @@ const ResultsBubblesPage = () => {
         return () => {clearInterval(intervalId);}
     }, []); //
 
-    const getNewBubble = (bubble:{category: string, vote: number}) => {
+    const getNewBubble = (bubble:{category: string, vote: number, id:string}) => {
         if(!(bubble.category && bubble.vote >= 0)) return;
         const [x,y] = getCategoryCenter(bubble.category);
         return {
-            name: generateKey(),
+            name: bubble.category + bubble.id, //generateKey(),
             radius: (bubble.vote - 50) / 50,
             color: getCategorySliderColor(bubble.category),
             force: 1,
@@ -93,7 +98,7 @@ const ResultsBubblesPage = () => {
     const updateData = async (category: string) => {
         const response = await fetch(url + `all?category=${category}`);
         const jsonData = await response.json();
-        const newBubbles = jsonData.map((bubble: { vote: number, category: string })=>{
+        const newBubbles = jsonData.map((bubble: { vote: number, category: string, id: string })=>{
             return getNewBubble(bubble);
         })
 
