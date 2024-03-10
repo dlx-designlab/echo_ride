@@ -29,6 +29,7 @@ const OldBubbles = ({ data }) => {
 
         sim = d3.forceSimulation(data)
             .force("y", d3.forceY((d)=>d.y))
+            .force("x", d3.forceX((d)=>d.x))
             .force("collide", d3.forceCollide((d) => getRadius(d.radius) + 1))
 
         sim.on('tick', function () {
@@ -36,10 +37,10 @@ const OldBubbles = ({ data }) => {
                 .selectAll("circle")
                 .attr('cx', d => d.x)
                 .attr('cy', d => d.y)
-            svg
-                .selectAll("image")
-                .attr('x', d => d.x - getRadius(d.radius) * 0.75)
-                .attr('y', d => d.y - getRadius(d.radius) * 0.75)
+            // svg
+            //     .selectAll("image")
+            //     .attr('x', d => d.x - getRadius(d.radius) * 0.75)
+            //     .attr('y', d => d.y - getRadius(d.radius) * 0.75)
         });
     }
 
@@ -59,15 +60,15 @@ const OldBubbles = ({ data }) => {
             .attr('stroke', (d) =>  d.color )
             .attr('stroke-width', 2)
 
-        const images = svg.selectAll('image')
-            .data(data)
-            .enter()
-            .append('image')
-            .attr('xlink:href', (d)=>d.image) // Replace with the actual path to your image
-            .attr('x', d => d.x - getRadius(d.radius) * radiusFactor) // Adjust the positioning based on your requirements
-            .attr('y', d => d.y - getRadius(d.radius) * radiusFactor)
-            .attr('width', d => 2 * getRadius(d.radius) * radiusFactor)
-            .attr('height', d => 2 * getRadius(d.radius) * radiusFactor);
+        // const images = svg.selectAll('image')
+        //     .data(data)
+        //     .enter()
+        //     .append('image')
+        //     .attr('xlink:href', (d)=>d.image) // Replace with the actual path to your image
+        //     .attr('x', d => d.x - getRadius(d.radius) * radiusFactor) // Adjust the positioning based on your requirements
+        //     .attr('y', d => d.y - getRadius(d.radius) * radiusFactor)
+        //     .attr('width', d => 2 * getRadius(d.radius) * radiusFactor)
+        //     .attr('height', d => 2 * getRadius(d.radius) * radiusFactor);
     }
 
     useEffect(() => {

@@ -35,8 +35,7 @@ const ResultsBubblesPage = () => {
             const data = JSON.parse(event.data);
             const newBubble = getNewBubble(data);
             if(!newBubble) return;
-            let bubbleToUpdate = votesList.find((b)=>b.name = data.category + data.id);
-            console.log(bubbleToUpdate);
+            let bubbleToUpdate = votesList.find((b)=>b.name == data.category + data.id);
             if(bubbleToUpdate) bubbleToUpdate.radius = (data.vote - 50) / 50;
             else votesList = [...votesList, newBubble];
             setBubblesList(votesList);
@@ -47,16 +46,16 @@ const ResultsBubblesPage = () => {
 
     useEffect(() => {
         // votes = [];
-        ECategory.map((category) => {
-            updateData(category).then(()=> {
-                setBubblesList(votesList);
-            });
-        })
+        // ECategory.map((category) => {
+        //     updateData(category).then(()=> {
+        //         setBubblesList(votesList);
+        //     });
+        // })
     }, []);
 
     useEffect(() => {
 
-        const yourFunction = () => {
+        const addEmptyBubble = () => {
 
             const key = generateKey();
             const emptyBubble = {
@@ -64,22 +63,35 @@ const ResultsBubblesPage = () => {
                 radius: 0,
                 color: '#343434',
                 force: 0.1,
-
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                // x: 100,
+                // y:100,
+                // x: Math.random() * window.innerWidth,
+                // y: Math.random() * window.innerHeight,
+                // x: Math.random() * window.innerWidth,
+                x: Math.random()*window.innerWidth,
+                y: Math.random()*window.innerHeight,
                 image: ''
             }
 
             votesList = [...votesList, emptyBubble];
             setBubblesList(votesList);
-
-
-
         };
 
-        const intervalId = setInterval(yourFunction, 5000); // 10000 milliseconds = 10 seconds
 
+
+        for(let i = 0; i < 300; i++){
+            addEmptyBubble();
+        }
+        const intervalId = setInterval(addEmptyBubble, 5000);
+
+
+        ECategory.map((category) => {
+            updateData(category).then(()=> {
+                setBubblesList(votesList);
+            });
+        })
         return () => {clearInterval(intervalId);}
+
     }, []); //
 
     const getNewBubble = (bubble:{category: string, vote: number, id:string}) => {
