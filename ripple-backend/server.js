@@ -38,12 +38,15 @@ app.get('/all', (req, res) => {
 app.get('/avg', (req, res) => {
     const getAll = `SELECT AVG(vote) FROM ${req.query.category}`;
 
+    console.log('avg ' +  req.query.category);
     db.all(getAll, (err, rows) => {
         if (err) {
             console.error('Error querying:', err.message);
-            rows = [];
+            res.send(JSON.stringify(50));
         }
-        res.send(JSON.stringify(rows[0]['AVG(vote)']));
+        else {
+            res.send(JSON.stringify(rows[0]['AVG(vote)']));
+        }
     });
 
 })
@@ -118,18 +121,7 @@ app.get('/sse', (req, res) => {
     clients.push(res);
 
     console.log('connected via sse');
-    // console.log(clients);
 
-    // const intervalId = setInterval(() => {
-    //     res.write(`data: ${JSON.stringify('sent')}\n\n`);
-    //     console.log('sent');
-    // }, 5000);
-    //
-    // req.on('close', () => {
-    //     clearInterval(intervalId);
-    // });
-
-    // Remove the client when the connection is closed
     req.on('close', () => {
         console.log('disconnected via sse');
         const index = clients.indexOf(res);
@@ -138,42 +130,6 @@ app.get('/sse', (req, res) => {
         }
     });
 });
-
-// app.get('/sse', (req, res) => {
-//     res.writeHead(200, {
-//         'Content-Type': 'text/event-stream',
-//         'Cache-Control': 'no-cache',
-//         'Connection': 'keep-alive',
-//         'Access-Control-Allow-Origin': '*'
-//     });
-//
-//     let count = -1;
-//     const intervalId = setInterval(() => {
-//         count += 1;
-//         res.write(`data: ${JSON.stringify(sensors[count])}\n\n`);
-//     }, 10);
-//
-//     req.on('close', () => {
-//         clearInterval(intervalId);
-//     });
-// });
-
-// app.get('/remove', (req, res) => {
-//     const createTableQuery = `
-//         DROP TABLE IF EXISTS users
-//     `;
-//
-//     db.run(createTableQuery, (err) => {
-//         if (err) {
-//             console.error('Error creating table:', err.message);
-//             res.send('failed');
-//         } else {
-//             res.send('success');
-//         }
-//     });
-
-
-// });
 
 
 app.listen(port, '0.0.0.0', () => {
