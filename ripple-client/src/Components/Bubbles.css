@@ -1,0 +1,53 @@
+.bubbles-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Additional styling to make it visually appealing */
+.bubble {
+    animation: bubbleAnimation 1s linear infinite;
+}
+
+@keyframes bubbleAnimation {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.node circle {
+    /*stroke: #000000;*/
+    /*stroke-width: 2px;*/
+    /*cursor: pointer;*/
+    opacity: 1;
+    /*fill: url("../icons/air.svg");*/
+
+}
+
+circle{
+    background: url("../icons/air.svg") no-repeat center center;
+    background-size: 22px;
+    /*animation: bubbleAnimation 1s linear;*/
+}
+
+/*air{*/
+/*    background: url("../icons/air.svg") no-repeat center center;*/
+/*    -webkit-background-size: cover;*/
+/*    -moz-background-size: cover;*/
+/*    -ms-background-size: cover;*/
+/*    -o-background-size: cover;*/
+/*    background-size: cover;*/
+/*}*/
