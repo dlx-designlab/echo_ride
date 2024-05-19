@@ -21,7 +21,7 @@ An interactive app for voting while using public transportation.
 - [Installation](#Installation)
 - [Backend](#Backend)
 - [Frontend](#Frontend)
-- [Run The App](#Run The App)
+- [Navigation](#Navigation)
 
 ## Installation
 
@@ -67,7 +67,7 @@ When the App is running, you should change the IP in the file ```ripple/ripple-c
 
 If you're using Windows, just run ```ip.bat``` file.
 
-## Run The App
+## Navigation
 Navigate to ```http://localhost:3000``` or ```http://YOUR-IP:3000``` in order to open the main screen.
 
 To see the Bubbles result page, navigate to ```http://YOUR-IP:3000/bubblesResults```
