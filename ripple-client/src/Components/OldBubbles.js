@@ -7,13 +7,14 @@ import './Bubbles.css';
 const OldBubbles = ({ data }) => {
     const svgRef = useRef();
 
-    const baseRadius = Math.min(window.innerHeight, window.innerWidth) / 30;
+    const baseRadius = Math.min(window.innerHeight, window.innerWidth) / 20;
     const radiusFactor = 0.75;
 
     let svg, sim;
 
     const getRadius = (radius) => {
-        return baseRadius + Math.abs(radius) * baseRadius;
+        // return baseRadius + Math.abs(radius) * baseRadius;
+        return baseRadius;
     }
     const updateScene = () => {
         svg =
@@ -30,7 +31,7 @@ const OldBubbles = ({ data }) => {
         sim = d3.forceSimulation(data)
             .force("y", d3.forceY((d)=>d.y))
             .force("x", d3.forceX((d)=>d.x))
-            .force("collide", d3.forceCollide((d) => getRadius(d.radius) + 1))
+            .force("collide", d3.forceCollide((d) => getRadius(d.radius) + 3))
 
         sim.on('tick', function () {
             svg
@@ -58,7 +59,7 @@ const OldBubbles = ({ data }) => {
             .style('fill', (d) => {return d.radius >= 0 ? d.color : "#343434" })
             .attr("r", (d) => getRadius(d.radius))
             .attr('stroke', (d) =>  d.color )
-            .attr('stroke-width', 2)
+            .attr('stroke-width', 3)
 
         // const images = svg.selectAll('image')
         //     .data(data)

@@ -58,6 +58,7 @@ app.post('/vote', (req, res) => {
     const vote = db.prepare(`INSERT OR REPLACE INTO ${data.category} (id, vote)
                             VALUES (?,?);`);
     const voteData = [req.ip, data.vote];
+    data.id = req.ip;
 
     vote.run(voteData, (err) => {
         if (err) {

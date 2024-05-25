@@ -51,3 +51,22 @@ circle{
 /*    -o-background-size: cover;*/
 /*    background-size: cover;*/
 /*}*/
+
+@keyframes fadeInOutUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.animated-image {
+    animation: fadeInOutUp 3s ;
+}

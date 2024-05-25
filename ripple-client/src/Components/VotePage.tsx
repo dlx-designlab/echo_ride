@@ -65,7 +65,6 @@ const VotePage = ({category}: { category: string}) => {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                id: "2",
                 category: category,
                 vote: value
             })
@@ -89,7 +88,7 @@ const VotePage = ({category}: { category: string}) => {
                 <Stack direction={"row"}
                        style={{...text, ...center, width: '80vh%', margin: '2vh', marginTop: '10vh', color: '#C9C9C9', whiteSpace: 'nowrap'}}>
                     {getCategoryRange(category)[1]}
-                    <Slider value={value} onChange={handleChange} track={false} style={{marginRight: '3vh', marginLeft: '3vh'}}
+                    <Slider value={value} onChange={handleChange} track={false} style={{marginRight: '3vh', marginLeft: '3vh', zIndex:'999999'}}
                             sx={{
                                 '& .MuiSlider-thumb': {color: "#C9C9C9"},
                                 '& .MuiSlider-rail': {color: '#C9C9C9'},

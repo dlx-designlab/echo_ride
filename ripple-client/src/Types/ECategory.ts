@@ -25,7 +25,7 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         emptyIcon: empty_driver,
         animation: driverAnim,
         color: '#AD95F2',
-        center: [0.3, 0.2]
+        center: [1, 0]
     },
     'ride': {
         title: 'חווית הנסיעה',
@@ -34,7 +34,7 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         emptyIcon: empty_ride,
         animation: rideAnim,
         color: '#FFC47A',
-        center: [0.7, 0.3]
+        center: [0.5, 0.8]
     },
     'clean': {
         title: 'ניקיון ותחזוקה',
@@ -43,7 +43,7 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         emptyIcon: empty_clean,
         animation: cleanAnim,
         color: '#379481',
-        center: [0.2, 0.6]
+        center: [-1, 0]
     },
     'safe': {
         title: 'תחושת ביטחון',
@@ -52,7 +52,7 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         emptyIcon: empty_safe,
         animation: safeAnim,
         color: '#386EDF',
-        center: [0.7, 0.5]
+        center: [-0.5, -0.8]
     },
     'crowded': {
         title: 'צפיפות ועומס',
@@ -61,7 +61,8 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         emptyIcon: empty_crowded,
         animation: crowdedAnim,
         color: '#F3B0D3',
-        center: [0.3, 0.8]
+        center: [0.5, -0.8]
+
     },
     'air': {
         title: 'איכות האויר',
@@ -70,7 +71,7 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         emptyIcon: empty_air,
         animation: airAnim,
         color: '#AFAFAF',
-        center: [0.7, 0.7]
+        center: [-0.5, 0.8]
     }
 }
 

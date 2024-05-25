@@ -23,10 +23,12 @@ export const pageHeader = {
 } as React.CSSProperties;
 export const resultsHeader = {
     color: '#ffffff',
-    fontSize: '4vh',
+    fontSize: '2.8vh',
     lineHeight: '1',
     zIndex: 10,
-    ...rightPosition
+    ...rightPosition,
+    width: '',
+    right: ''
 } as React.CSSProperties;
 export const subHeader = {
     color: '#929292',
@@ -34,7 +36,7 @@ export const subHeader = {
     lineHeight: '1.25',
     marginTop: '3vh',
     zIndex: 9,
-    ...rightPosition
+    ...rightPosition,
 } as React.CSSProperties;
 
 export const fadeIn = (duration: any) => {

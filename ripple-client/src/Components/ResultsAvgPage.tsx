@@ -27,10 +27,13 @@ const ResultsAvgPage = () => {
         const hour = currentDate.getHours();
         const minutes = currentDate.getMinutes();
 
-        const formattedDate = ` יום ${dayOfWeek}', ${date}.${month}, ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
+        const minsDiff = 42;
+        const prevMin = minutes >= minsDiff ? minutes - minsDiff : 60 + (minutes - minsDiff);
+        const prevHour = minutes >= minsDiff ? hour : hour - 1;
+
+        const formattedDate = ` יום ${dayOfWeek}', ${date}.${month}, ${hour}:${minutes < 10 ? '0' : ''}${minutes} - ${prevHour}:${prevMin < 10 ? '0' : ''}${prevMin}`;
 
         setDate(formattedDate);
-        console.log(formattedDate);
     }, []);
 
     const updateTable = async (category: string) => {
@@ -43,10 +46,10 @@ const ResultsAvgPage = () => {
 
     return (
         <Stack style={{ position:'absolute', right:'0', left: '0', top:'0', width: '100%', height:'100%', ...fadeIn(0.5), background:'black'}}>
-        <Typography style={{...subHeader,...center, marginTop:'0'}}>
-            חווית הנסיעה, קו {busNumber}
+        <Typography style={{...subHeader,...center, marginTop:'0', width:'', right:''}}>
+            סיכום שיתופי חווית הנסיעה, קו {busNumber}
         </Typography>
-        <Typography style={{...resultsHeader,...center}}>
+        <Typography style={{...resultsHeader,...center, marginTop: '1vh'}}>
             {date}
         </Typography>
         <div style={{position:'relative', top:'10vh'}}>
