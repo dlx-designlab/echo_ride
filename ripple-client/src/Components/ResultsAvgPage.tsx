@@ -31,7 +31,7 @@ const ResultsAvgPage = () => {
         const prevMin = minutes >= minsDiff ? minutes - minsDiff : 60 + (minutes - minsDiff);
         const prevHour = minutes >= minsDiff ? hour : hour - 1;
 
-        const formattedDate = ` יום ${dayOfWeek}', ${date}.${month}, ${hour}:${minutes < 10 ? '0' : ''}${minutes} - ${prevHour}:${prevMin < 10 ? '0' : ''}${prevMin}`;
+        const formattedDate = ` יום ${dayOfWeek}' · ${date}.${month} · ${hour}:${minutes < 10 ? '0' : ''}${minutes} - ${prevHour}:${prevMin < 10 ? '0' : ''}${prevMin}`;
 
         setDate(formattedDate);
     }, []);

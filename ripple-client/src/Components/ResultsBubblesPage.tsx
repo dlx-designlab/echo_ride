@@ -118,7 +118,7 @@ const ResultsBubblesPage = () => {
                 setBubblesList(votesList);
             });
         })
-        }, 1500);
+        }, 500);
         return () => {clearInterval(intervalId);}
 
     }, []); //
@@ -160,8 +160,13 @@ const ResultsBubblesPage = () => {
                 {date}
             </Typography>
             <Stack direction="row" style={center}>
-                <Typography style={{...text, color:'white', marginTop:'8vh', textAlign:'left',  lineHeight: '1', marginLeft:'1vh', marginRight:'2vh', ...bubblesSubFontSize}}>רכבת סבידור מרכז</Typography>
-            <Slider value={75} track={false} style={{...resultsHeader, marginTop:'-1vh', width:'60%', left: '0', right: '0'}} size={"small"}/>
+                <Typography style={{...text, color:'white', marginTop:'8vh', textAlign:'left',  lineHeight: '1', marginLeft:'1vh', marginRight:'2vh', ...bubblesSubFontSize}}>רכבת ת"א סבידור</Typography>
+            <Slider value={75} track={false} style={{...resultsHeader, marginTop:'-1vh', width:'60%', left: '0', right: '0'}} size={"small"}
+                    sx={{
+                        '& .MuiSlider-thumb': {color: 'white', boxShadow: '0 0 0 4px #000'},
+                        '& .MuiSlider-rail': {color: 'white', height: 2, opacity: 1},
+                        // '& .MuiSlider-active': {color: "#C9C9C9"},
+                    }}/>
                 <Typography style={{...text, color:'white', marginTop:'8vh',  lineHeight: '1', marginLeft:'2vh', marginRight:'1vh', ...bubblesSubFontSize}}>מסוף הלוחמים</Typography>
 
             </Stack>

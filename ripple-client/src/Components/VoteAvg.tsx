@@ -8,7 +8,7 @@ const VoteAvg = ({category, value}: {category: string, value: number }) => {
     return (
         <Stack>
             <Stack direction={"row"}
-                   style={{...text, right: '0', left: '0', width: '100%', color: '#ffffff', whiteSpace: 'nowrap', height:'12vh'}}>
+                   style={{...text, right: '0', left: '0', width: '100%', color: '#ffffff', whiteSpace: 'nowrap', height:'14vh'}}>
                 <p style={{ width:'15vh', marginRight: '3vh', marginLeft: '3vh'}}>{getCategoryRange(category)[1]}</p>
                 <div style={{width: '100%'}}>
                     <Lottie  animationData={getCategoryAnimation(category) }
