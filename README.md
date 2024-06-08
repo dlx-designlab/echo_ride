@@ -1,20 +1,6 @@
-How to run server:
+# Echo Ride App
 
-
-cd ripple-backend
-npm i
-node server.js
-How to run client:
-
-
-update file ripple-client/src/ip.js to include the local ip
-cd ripple-client
-npm i
-npm start
-
-# Ripple App
-
-An interactive app for voting while using public transportation.
+An experimental interactive app for passenger reports while using public transportation.
 
 ## Table of Contents
 
@@ -71,3 +57,21 @@ If you're using Windows, just run ```ip.bat``` file.
 Navigate to ```http://localhost:3000``` or ```http://YOUR-IP:3000``` in order to open the main screen.
 
 To see the Bubbles result page, navigate to ```http://YOUR-IP:3000/bubblesResults```
+
+
+## Old Comments...
+
+How to run the server:
+```
+cd ripple-backend
+npm i
+node server.js
+```
+
+How to run the client:
+update file `ripple-client/src/ip.js` to include the local ip
+```
+cd ripple-client
+npm i
+npm start
+```

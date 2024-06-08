@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3001;
 
+const node_osc = require('node-osc').Client;
+
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('ripple.db');
+
 
 app.use(express.json());
 app.set('trust proxy', true)
@@ -53,8 +56,43 @@ app.get('/avg', (req, res) => {
 
 app.post('/vote', (req, res) => {
     data = req.body;
+    console.log(`voted: ${data.category} - ${data.vote}`);
 
-    console.log('voted');
+    // save category from data as a number to send over OSC
+    let cat = 0;
+    switch (data.category) {
+        case 'ride':
+            cat = 1
+            break;
+        case 'driver':
+            cat = 2;
+            break;
+        case 'crowded':
+            cat = 3
+            break;
+        case 'clean':
+            cat = 4
+            break;
+        case 'air':
+            cat = 5
+            break;
+        case 'safe':
+            cat = 6
+            break;
+        default:
+            data.category = 0;
+    }
+
+    // send data over OSC to touchdesigner
+    const oscClient = new node_osc('192.168.0.101', 3333);
+    oscClient.send('/vote', cat, (err) => {
+        if (err) {
+            console.error('Error sending OSC:', err.message);
+        }
+    });
+    console.log('osc msg sent');
+    // oscClient.close();
+
     const vote = db.prepare(`INSERT OR REPLACE INTO ${data.category} (id, vote)
                             VALUES (?,?);`);
     const voteData = [req.ip, data.vote];
@@ -67,7 +105,7 @@ app.post('/vote', (req, res) => {
             clients.forEach(client => {
                 console.log(data)
                 client.write(`data: ${JSON.stringify(data)}\n\n`);
-                client.flushHeaders();
+                client.flushHeaders();                                
             });
 
             res.send('vote added: ' + data.toString());
