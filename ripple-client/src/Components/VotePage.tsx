@@ -7,6 +7,7 @@ import {getCategoryAnimation, getCategoryRange, getCategoryText} from "../Types/
 import {ArrowForward} from "@mui/icons-material";
 import {center, fadeIn, fadeInUp, pageHeader, text} from "../Types/Styles";
 import {url} from "../Types/Consts";
+import {translation} from "../Translation/texts";
 
 export interface voteProps {
     id: string;
@@ -103,7 +104,7 @@ const VotePage = ({category}: { category: string}) => {
                                                          initialSegment={frames} autoplay={false} loop={false}
               style={{position:'absolute',bottom: '0', width:'100%', height:'70vh'}}/>
                 <Button onClick={handleSubmit} variant="contained"
-                        sx={{borderRadius: 28, width: '70%', ...text, bottom:'10vh'}}>שתף</Button>
+                        sx={{borderRadius: 28, width: '70%', ...text, bottom:'10vh'}}>{translation.buttons.share}</Button>
             </div>
         </div>
     );

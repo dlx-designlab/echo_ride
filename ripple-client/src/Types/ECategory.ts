@@ -16,11 +16,13 @@ import crowdedAnim from '../icons/crowded.json';
 import driverAnim from '../icons/driver.json';
 import rideAnim from '../icons/ride.json';
 import safeAnim from '../icons/safe.json';
+import {translation} from "../Translation/texts";
 
-const Categories: Record<string, { title: string, range: [string, string], icon: string, emptyIcon: string, animation:any, color: string, center:[number, number] }> = {
+const Categories: Record<string, { title: string, shortTitle: string, range: [string, string], icon: string, emptyIcon: string, animation:any, color: string, center:[number, number] }> = {
     'driver': {
-        title: 'יחס הנהג',
-        range: ['גס רוח', 'אדיב'],
+        title: translation.categories.driver.title,
+        shortTitle: translation.categories.driver.shortTitle,
+        range: [translation.categories.driver.min, translation.categories.driver.max],
         icon: driver,
         emptyIcon: empty_driver,
         animation: driverAnim,
@@ -28,8 +30,9 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         center: [1, 0]
     },
     'ride': {
-        title: 'חווית הנסיעה',
-        range: ['פרועה', 'נינוחה'],
+        title: translation.categories.ride.title,
+        shortTitle: translation.categories.ride.shortTitle,
+        range: [translation.categories.ride.min, translation.categories.ride.max],
         icon: ride,
         emptyIcon: empty_ride,
         animation: rideAnim,
@@ -37,8 +40,9 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         center: [0.5, 0.8]
     },
     'clean': {
-        title: 'ניקיון ותחזוקה',
-        range: ['מלוכלך', 'מצוחצח'],
+        title: translation.categories.clean.title,
+        shortTitle: translation.categories.clean.shortTitle,
+        range: [translation.categories.clean.min, translation.categories.clean.max],
         icon: clean,
         emptyIcon: empty_clean,
         animation: cleanAnim,
@@ -46,8 +50,9 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         center: [-1, 0]
     },
     'safe': {
-        title: 'תחושת ביטחון',
-        range: ['מעיק', 'נעים'],
+        title: translation.categories.safety.title,
+        shortTitle: translation.categories.safety.shortTitle,
+        range: [translation.categories.safety.min, translation.categories.safety.max],
         icon: safe,
         emptyIcon: empty_safe,
         animation: safeAnim,
@@ -55,8 +60,9 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
         center: [-0.5, -0.8]
     },
     'crowded': {
-        title: 'צפיפות ועומס',
-        range: ['דחוק', 'מרווח'],
+        title: translation.categories.crowd.title,
+        shortTitle: translation.categories.crowd.shortTitle,
+        range: [translation.categories.crowd.min, translation.categories.crowd.max],
         icon: crowded,
         emptyIcon: empty_crowded,
         animation: crowdedAnim,
@@ -65,8 +71,9 @@ const Categories: Record<string, { title: string, range: [string, string], icon:
 
     },
     'air': {
-        title: 'איכות האויר',
-        range: ['מחניק', 'מאוורר'],
+        title: translation.categories.air.title,
+        shortTitle: translation.categories.air.shortTitle,
+        range: [translation.categories.air.min, translation.categories.air.max],
         icon: air,
         emptyIcon: empty_air,
         animation: airAnim,
@@ -98,6 +105,9 @@ export const ECategory = Object.keys(Categories);
 
 export const getCategoryText = (category: string) => {
     return Categories[category].title;
+}
+export const getCategoryShortText = (category: string) => {
+    return Categories[category].shortTitle || Categories[category].title;
 }
 
 // export const sliderCategories: Record<string, [string, string]> = {

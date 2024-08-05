@@ -3,20 +3,20 @@ import {Button, Stack, Typography} from "@mui/material";
 import {center, fadeIn, pageHeader, subHeader, text} from "../Types/Styles";
 import { getCategoryIcon} from "../Types/ECategory";
 import { useNavigate} from "react-router-dom";
+import {translation} from "../Translation/texts";
 
 const FinishPage = () => {
     const navigate = useNavigate();
     return (
         <div>
             <Stack style={{...fadeIn(0.5), marginTop: '7vh'}}>
-            <Typography style={{...pageHeader, textAlign:'center', right:'15%'}}>תודה על שיתוף החוויה!</Typography>
-            <Typography style={{...pageHeader, textAlign:'center', right:'15%'}}>אנחנו ניקח את זה מכאן </Typography>
-            <Typography style={{...subHeader, textAlign:'center', right:'15%'}}>תרצה לשתף במשהו נוסף?</Typography>
+            <Typography style={{...pageHeader, textAlign:'center', right:'15%'}}>{translation.sharing.title}</Typography>
+            <Typography style={{...subHeader, textAlign:'center', right:'15%'}}>{translation.sharing.subtitle}</Typography>
             <Stack direction={"row"} style={{...center, marginTop:'9vh'}}>
                 <Button onClick={()=>{navigate('/');}} variant="contained"
-                        sx={{borderRadius: 28, width: '30%', ...text, margin:'1vh'}}>כן</Button>
+                        sx={{borderRadius: 28, width: '30%', ...text, margin:'1vh'}}>{translation.buttons.yes}</Button>
                 <Button onClick={()=>{navigate('/results');}} variant="contained"
-                        sx={{borderRadius: 28, width: '30%', ...text, margin:'1vh'}}>לא, סיימתי</Button>
+                        sx={{borderRadius: 28, width: '30%', ...text, margin:'1vh'}}>{translation.buttons.no}</Button>
             </Stack>
 
         </Stack>

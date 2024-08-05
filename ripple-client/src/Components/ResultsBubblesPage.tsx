@@ -7,6 +7,7 @@ import {center, resultsHeader, subHeader, text} from "../Types/Styles";
 import OldBubbles from "./OldBubbles";
 import logosMap from '../icons/logosMap.png';
 import share from '../icons/share.png';
+import {getAverageDate, getBubblesDate, translation} from "../Translation/texts";
 
 export interface IBubble {
     x: number;
@@ -38,19 +39,7 @@ const ResultsBubblesPage = () => {
     const [isNewShare, setIsNewShare] = useState(false);
 
     useEffect(() => {
-        const currentDate = new Date();
-
-        const daysOfWeek = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'];
-
-        const dayOfWeek = daysOfWeek[currentDate.getDay()];
-        const date = currentDate.getDate();
-        const month = currentDate.getMonth() + 1;
-        const hour = currentDate.getHours();
-        const minutes = currentDate.getMinutes();
-
-        const formattedDate = ` יום ${dayOfWeek}' ${date}.${month} ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
-
-        setDate(formattedDate);
+        setDate(getBubblesDate());
     }, []);
 
     useEffect(()=> {
@@ -154,20 +143,20 @@ const ResultsBubblesPage = () => {
         <Stack style={{ position:'absolute', right:'0', left: '0', top:'0', width: '100%', ...gradientStyle}}>
 
             <Typography style={{...resultsHeader,...center, marginTop:'0'}}>
-                חווית הנסיעה, קו 5
+                {translation.resultsBubbles.title}
             </Typography>
             <Typography style={{...subHeader,...center, marginTop: '1vh', fontSize:'4vh', width:'', right:''}}>
                 {date}
             </Typography>
             <Stack direction="row" style={center}>
-                <Typography style={{...text, color:'white', marginTop:'8vh', textAlign:'left',  lineHeight: '1', marginLeft:'1vh', marginRight:'2vh', ...bubblesSubFontSize}}>רכבת ת"א סבידור</Typography>
+                <Typography style={{...text, color:'white', marginTop:'8vh', textAlign:'left',  lineHeight: '1', marginLeft:'1vh', marginRight:'2vh', ...bubblesSubFontSize}}>{translation.resultsBubbles.stations.start}</Typography>
             <Slider value={75} track={false} style={{...resultsHeader, marginTop:'-1vh', width:'60%', left: '0', right: '0'}} size={"small"}
                     sx={{
                         '& .MuiSlider-thumb': {color: 'white', boxShadow: '0 0 0 4px #000'},
                         '& .MuiSlider-rail': {color: 'white', height: 2, opacity: 1},
                         // '& .MuiSlider-active': {color: "#C9C9C9"},
                     }}/>
-                <Typography style={{...text, color:'white', marginTop:'8vh',  lineHeight: '1', marginLeft:'2vh', marginRight:'1vh', ...bubblesSubFontSize}}>מסוף הלוחמים</Typography>
+                <Typography style={{...text, color:'white', marginTop:'8vh',  lineHeight: '1', marginLeft:'2vh', marginRight:'1vh', ...bubblesSubFontSize}}>{translation.resultsBubbles.stations.end}</Typography>
 
             </Stack>
 
@@ -175,7 +164,7 @@ const ResultsBubblesPage = () => {
             <Stack style={{ position:'absolute', right:'0', left: '0', bottom:'0'}}>
                 <Stack style={{marginBottom: '2vh'}}>
                 <Typography style={{...text, color: '#929292', ...bubblesSubFontSize, lineHeight: '1.25',...center,width:'100%',marginBottom:'3vh'}}>
-                    ○ משוב שלילי  &nbsp; &nbsp;   ● משוב חיובי
+                    ○ {translation.resultsBubbles.feedback.negative}  &nbsp; &nbsp;   ● {translation.resultsBubbles.feedback.positive}
                 </Typography>
                 <img src={logosMap} />
                 </Stack>

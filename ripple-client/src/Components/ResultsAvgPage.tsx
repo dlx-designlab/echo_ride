@@ -5,6 +5,7 @@ import {ECategory} from "../Types/ECategory";
 import VoteAvg from "./VoteAvg";
 import {Stack, Typography} from "@mui/material";
 import {center, fadeIn, resultsHeader, subHeader} from "../Types/Styles";
+import {getAverageDate, translation} from "../Translation/texts";
 
 const ResultsAvgPage = () => {
     const [data, setData] = useState({});
@@ -16,24 +17,7 @@ const ResultsAvgPage = () => {
         ECategory.map((category) => {
             updateTable(category).then();
         })
-
-        const currentDate = new Date();
-
-        const daysOfWeek = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'];
-
-        const dayOfWeek = daysOfWeek[currentDate.getDay()];
-        const date = currentDate.getDate();
-        const month = currentDate.getMonth() + 1;
-        const hour = currentDate.getHours();
-        const minutes = currentDate.getMinutes();
-
-        const minsDiff = 42;
-        const prevMin = minutes >= minsDiff ? minutes - minsDiff : 60 + (minutes - minsDiff);
-        const prevHour = minutes >= minsDiff ? hour : hour - 1;
-
-        const formattedDate = ` יום ${dayOfWeek}' · ${date}.${month} · ${hour}:${minutes < 10 ? '0' : ''}${minutes} - ${prevHour}:${prevMin < 10 ? '0' : ''}${prevMin}`;
-
-        setDate(formattedDate);
+        setDate(getAverageDate());
     }, []);
 
     const updateTable = async (category: string) => {
@@ -47,7 +31,7 @@ const ResultsAvgPage = () => {
     return (
         <Stack style={{ position:'absolute', right:'0', left: '0', top:'0', width: '100%', height:'100%', ...fadeIn(0.5), background:'black'}}>
         <Typography style={{...subHeader,...center, marginTop:'0', width:'', right:''}}>
-            סיכום שיתופי חווית הנסיעה, קו {busNumber}
+            {translation.resultsAvg.title} {busNumber}
         </Typography>
         <Typography style={{...resultsHeader,...center, marginTop: '1vh'}}>
             {date}

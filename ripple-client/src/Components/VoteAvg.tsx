@@ -1,7 +1,13 @@
 import * as React from 'react';
 import {Slider, Stack, Typography} from "@mui/material";
 import {center, subHeader, text} from "../Types/Styles";
-import {getCategoryAnimation, getCategoryRange, getCategorySliderColor, getCategoryText} from "../Types/ECategory";
+import {
+    getCategoryAnimation,
+    getCategoryRange,
+    getCategoryShortText,
+    getCategorySliderColor,
+    getCategoryText
+} from "../Types/ECategory";
 import Lottie from "lottie-react";
 
 const VoteAvg = ({category, value}: {category: string, value: number }) => {
@@ -22,7 +28,7 @@ const VoteAvg = ({category, value}: {category: string, value: number }) => {
                             // '& .MuiSlider-active': {color: "#C9C9C9"},
                         }}
                 />
-                    <Typography sx={{color:'white',...subHeader,...center, marginTop:'-12vh', width:'100%', right:'0', fontSize: '2vh',}}>{getCategoryText(category)}</Typography>
+                    <Typography sx={{color:'white',...subHeader,...center, marginTop:'-12vh', width:'100%', right:'0', fontSize: '2vh',}}>{getCategoryShortText(category)}</Typography>
                 </div>
                 <p style={{textAlign:'left', width:'15vh', marginRight: '3vh', marginLeft: '3vh', left: '0' }}>{getCategoryRange(category)[0]}</p>
             </Stack>

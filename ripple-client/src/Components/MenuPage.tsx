@@ -2,16 +2,16 @@ import * as React from 'react';
 import {Stack, Typography} from "@mui/material";
 import MenuIcons from "./MenuIcons";
 import {fadeIn, pageHeader, subHeader} from "../Types/Styles";
+import {translation} from "../Translation/texts";
 
 const MenuPage = () => {
 
     return (
         <Stack><div style={fadeIn(0.5)}>
-            <Typography style={pageHeader}>איך מרגישה חווית
-                הנסיעה?
+            <Typography style={pageHeader}>  {translation.mainPage.title}
             </Typography>
             <Typography style={subHeader}>
-                בחרו את הקטגוריה ושתפו את חווית הנסיעה שלכם. בעזרת הדיווח שלכם נוכל לשפר את השירות
+                {translation.mainPage.subtitle}
             </Typography></div>
 
             <MenuIcons />
