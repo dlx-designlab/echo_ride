@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {busNumber, url} from "../Types/Consts";
+import {url} from "../Types/Consts";
 import {useEffect, useState} from "react";
 import {ECategory} from "../Types/ECategory";
 import VoteAvg from "./VoteAvg";
