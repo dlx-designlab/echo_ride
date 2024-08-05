@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {url} from "../Types/Consts";
+import {busNumber, url} from "../Types/Consts";
 import {useEffect, useState} from "react";
 import {ECategory} from "../Types/ECategory";
 import VoteAvg from "./VoteAvg";
@@ -10,7 +10,6 @@ import {getAverageDate, translation} from "../Translation/texts";
 const ResultsAvgPage = () => {
     const [data, setData] = useState({});
     const [date, setDate] = useState('');
-    const [busNumber, setBusNumber] = useState(5);
     let votes = {};
 
     useEffect(() => {
@@ -31,7 +30,7 @@ const ResultsAvgPage = () => {
     return (
         <Stack style={{ position:'absolute', right:'0', left: '0', top:'0', width: '100%', height:'100%', ...fadeIn(0.5), background:'black'}}>
         <Typography style={{...subHeader,...center, marginTop:'0', width:'', right:''}}>
-            {translation.resultsAvg.title} {busNumber}
+            {translation.resultsAvg.title}
         </Typography>
         <Typography style={{...resultsHeader,...center, marginTop: '1vh'}}>
             {date}

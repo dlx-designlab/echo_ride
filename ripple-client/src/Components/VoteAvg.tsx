@@ -6,7 +6,6 @@ import {
     getCategoryRange,
     getCategoryShortText,
     getCategorySliderColor,
-    getCategoryText
 } from "../Types/ECategory";
 import Lottie from "lottie-react";
 

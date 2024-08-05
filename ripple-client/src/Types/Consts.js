@@ -4,3 +4,5 @@ import ip from '../ip';
 export const port = '3001';
 export const url = `http://${ip}:${port}/`;
 
+export const busNumber = 5;
+

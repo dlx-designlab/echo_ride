@@ -1,5 +1,6 @@
 import {translationType} from "../Types/Translations";
 import {currentLanguage, languages} from "./Language";
+import {busNumber} from "../Types/Consts";
 
 const english : translationType = {
     buttons: {no: "No", share: "Share", yes: "Yes"},
@@ -46,11 +47,11 @@ const english : translationType = {
         subtitle: 'Choose a category and share your ride experience. Your feedback will help us improve the service.'
     },
     resultsAvg: {
-        title: 'Ride Reports Overview, Bus Route ',
+        title: 'Ride Reports Overview, Bus Route ' + busNumber,
         subtitle: ''
     },
     resultsBubbles: {
-        title: ' Ride Experience on Bus Route ',
+        title: ' Ride Experience on Bus Route ' + busNumber,
         subtitle: '',
         stations: {
             start: 'Duke of York Square (Stop G)',
@@ -114,11 +115,11 @@ const hebrew : translationType = {
         subtitle: 'בחרו את הקטגוריה ושתפו את חווית הנסיעה שלכם. בעזרת הדיווח שלכם נוכל לשפר את השירות'
     },
     resultsAvg: {
-        title: 'סיכום שיתופי חווית הנסיעה, קו ',
+        title: 'סיכום שיתופי חווית הנסיעה, קו ' + busNumber,
         subtitle: ''
     },
     resultsBubbles: {
-        title: 'חווית הנסיעה, קו ',
+        title: 'חווית הנסיעה, קו ' + busNumber,
         subtitle: '',
         stations: {
             start: 'מסוף הלוחמים',
@@ -142,9 +143,6 @@ export const translation = currentLanguage === languages.hebrew ? hebrew : engli
 
 const englishDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const hebrewDays = ['יום א', 'יום ב', 'יום ג', 'יום ד', 'יום ה', 'יום ו', 'יום ש']
-export const getDay = (index: number) => {
-
-};
 
 export const getAverageDate = () =>
 {

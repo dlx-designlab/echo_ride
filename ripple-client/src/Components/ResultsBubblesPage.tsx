@@ -7,7 +7,7 @@ import {center, resultsHeader, subHeader, text} from "../Types/Styles";
 import OldBubbles from "./OldBubbles";
 import logosMap from '../icons/logosMap.png';
 import share from '../icons/share.png';
-import {getAverageDate, getBubblesDate, translation} from "../Translation/texts";
+import {getBubblesDate, translation} from "../Translation/texts";
 
 export interface IBubble {
     x: number;
