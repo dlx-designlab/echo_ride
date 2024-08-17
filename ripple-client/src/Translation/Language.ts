@@ -1,6 +1,3 @@
-export enum languages {
-    hebrew,
-    english
-}
+import {english, hebrew} from "./texts";
 
-export const currentLanguage = languages.hebrew;
+export const translation = hebrew;

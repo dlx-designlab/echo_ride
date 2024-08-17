@@ -5,9 +5,9 @@ import {ECategory, getCategoryCenter, getCategoryIcon, getCategorySliderColor} f
 import {Slider, Stack, Typography} from "@mui/material";
 import {center, resultsHeader, subHeader, text} from "../Types/Styles";
 import OldBubbles from "./OldBubbles";
-import logosMap from '../icons/logosMap.png';
-import share from '../icons/share.png';
-import {getBubblesDate, translation} from "../Translation/texts";
+import share from '../icons/share_he.png';
+import {getBubblesDate} from "../Translation/texts";
+import {translation} from "../Translation/Language";
 
 export interface IBubble {
     x: number;
@@ -138,25 +138,25 @@ const ResultsBubblesPage = () => {
     return (
         <div>
         <OldBubbles data={bubblesList}/>
-            <img src={share} className={isNewShare ? 'animated-image' : ''} style={{position: 'absolute', top:`${sharePosition[1]}px`, left: `${sharePosition[0]}px`, width: '15vh', opacity: '0', marginLeft:'-7.5vh', marginTop:'-5vh'}}/>
+            <img src={translation.resultsBubbles.share} className={isNewShare ? 'animated-image' : ''} style={{position: 'absolute', top:`${sharePosition[1]}px`, left: `${sharePosition[0]}px`, width: '15vh', opacity: '0', marginLeft:'-7.5vh', marginTop:'-5vh'}}/>
 
         <Stack style={{ position:'absolute', right:'0', left: '0', top:'0', width: '100%', ...gradientStyle}}>
 
-            <Typography style={{...resultsHeader,...center, marginTop:'0'}}>
+            <Typography style={{...resultsHeader,...center, marginTop:'0', left:''}}>
                 {translation.resultsBubbles.title}
             </Typography>
-            <Typography style={{...subHeader,...center, marginTop: '1vh', fontSize:'4vh', width:'', right:''}}>
+            <Typography style={{...subHeader,...center, marginTop: '1vh', fontSize:'4vh', width:'', right:'', left: ''}}>
                 {date}
             </Typography>
             <Stack direction="row" style={center}>
-                <Typography style={{...text, color:'white', marginTop:'8vh', textAlign:'left',  lineHeight: '1', marginLeft:'1vh', marginRight:'2vh', ...bubblesSubFontSize}}>{translation.resultsBubbles.stations.start}</Typography>
-            <Slider value={75} track={false} style={{...resultsHeader, marginTop:'-1vh', width:'60%', left: '0', right: '0'}} size={"small"}
+                <Typography style={{...text, color:'white', marginTop:'8vh', textAlign:'left',  lineHeight: '1', marginLeft:'1vh', marginRight:'1vh',  width: '25vh', ...bubblesSubFontSize}}>{translation.resultsBubbles.stations.start}</Typography>
+            <Slider value={75} track={false} style={{...resultsHeader, marginTop:'-1vh', width:'50vh', left: '0', right: '0'}} size={"small"}
                     sx={{
                         '& .MuiSlider-thumb': {color: 'white', boxShadow: '0 0 0 4px #000'},
                         '& .MuiSlider-rail': {color: 'white', height: 2, opacity: 1},
                         // '& .MuiSlider-active': {color: "#C9C9C9"},
                     }}/>
-                <Typography style={{...text, color:'white', marginTop:'8vh',  lineHeight: '1', marginLeft:'2vh', marginRight:'1vh', ...bubblesSubFontSize}}>{translation.resultsBubbles.stations.end}</Typography>
+                <Typography style={{...text, color:'white', marginTop:'8vh',  lineHeight: '1', marginLeft:'1vh', marginRight:'1vh', textAlign: 'right', width: '25vh', ...bubblesSubFontSize}}>{translation.resultsBubbles.stations.end}</Typography>
 
             </Stack>
 
@@ -166,7 +166,7 @@ const ResultsBubblesPage = () => {
                 <Typography style={{...text, color: '#929292', ...bubblesSubFontSize, lineHeight: '1.25',...center,width:'100%',marginBottom:'3vh'}}>
                     ○ {translation.resultsBubbles.feedback.negative}  &nbsp; &nbsp;   ● {translation.resultsBubbles.feedback.positive}
                 </Typography>
-                <img src={logosMap} />
+                <img src={translation.resultsBubbles.img} />
                 </Stack>
             </Stack>
         </div>

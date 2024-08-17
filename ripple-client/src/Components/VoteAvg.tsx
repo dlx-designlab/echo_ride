@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Slider, Stack, Typography} from "@mui/material";
+import {Slider, Stack, Typography, Grid} from "@mui/material";
 import {center, subHeader, text} from "../Types/Styles";
 import {
     getCategoryAnimation,
@@ -11,12 +11,17 @@ import Lottie from "lottie-react";
 
 const VoteAvg = ({category, value}: {category: string, value: number }) => {
     return (
-        <Stack>
-            <Stack direction={"row"}
-                   style={{...text, right: '0', left: '0', width: '100%', color: '#ffffff', whiteSpace: 'nowrap', height:'14vh'}}>
-                <p style={{ width:'15vh', marginRight: '3vh', marginLeft: '3vh'}}>{getCategoryRange(category)[1]}</p>
-                <div style={{width: '100%'}}>
-                    <Lottie  animationData={getCategoryAnimation(category) }
+        // <Stack>
+        <>
+            <Grid item xs={3} style={{...text, right: '0', left: '0', width: '100%', color: '#ffffff', whiteSpace: 'nowrap', height:'14vh'}}>
+            {/*<Stack direction={"row"}*/}
+            {/*       style={{...text, right: '0', left: '0', width: '100%', color: '#ffffff', whiteSpace: 'nowrap', height:'14vh'}}>*/}
+                <p style={{ textAlign: 'right'}}>{getCategoryRange(category)[1]}</p>
+            </Grid>
+    <Grid item xs={6} style={{ paddingLeft: '1vh', paddingRight:'1vh'}}>
+        <div style={{width: '100%'}}>
+
+    <Lottie  animationData={getCategoryAnimation(category) }
                              initialSegment={[value, value+1]} autoplay={false} loop={false}
                              style={{ position: 'relative', top:'-3vh', height:'6vh', width:'6vh', left:`${value}%`, right:`${100-value}%`, marginRight:'-3vh', zIndex:'1000' }}/>
                 <Slider value={value} track={false} style={{width: '100%', top: '-5vh', zIndex:'900'}}
@@ -29,9 +34,11 @@ const VoteAvg = ({category, value}: {category: string, value: number }) => {
                 />
                     <Typography sx={{color:'white',...subHeader,...center, marginTop:'-12vh', width:'100%', right:'0', fontSize: '2vh',}}>{getCategoryShortText(category)}</Typography>
                 </div>
-                <p style={{textAlign:'left', width:'15vh', marginRight: '3vh', marginLeft: '3vh', left: '0' }}>{getCategoryRange(category)[0]}</p>
-            </Stack>
-        </Stack>
+   </Grid>
+    <Grid item xs={3} style={{...text, right: '0', left: '0', width: '100%', color: '#ffffff', whiteSpace: 'nowrap', height:'14vh'}}>
+                <p style={{textAlign:'left' }}>{getCategoryRange(category)[0]}</p>
+    </Grid>
+        </>
     );
 }
 

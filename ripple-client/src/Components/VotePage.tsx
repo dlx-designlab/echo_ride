@@ -3,11 +3,11 @@ import {Button, IconButton, Slider, Stack, Typography} from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useRef, useState} from "react";
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
-import {getCategoryAnimation, getCategoryRange, getCategoryText} from "../Types/ECategory";
+import {getCategoryAnimation, getCategoryRange, getCategoryShortText, getCategoryText} from "../Types/ECategory";
 import {ArrowForward} from "@mui/icons-material";
-import {center, fadeIn, fadeInUp, pageHeader, text} from "../Types/Styles";
+import {center, fadeIn, fadeInUp, pageHeader, text, votePageHeader} from "../Types/Styles";
 import {url} from "../Types/Consts";
-import {translation} from "../Translation/texts";
+import {translation} from "../Translation/Language";
 
 export interface voteProps {
     id: string;
@@ -81,10 +81,10 @@ const VotePage = ({category}: { category: string}) => {
                 </IconButton>
 
                 <Typography style={{
-                    ...pageHeader,
+                    ...votePageHeader,
                     position: 'relative',
                     marginTop: '5vh'
-                }}>{getCategoryText(category)}</Typography>
+                }}>{getCategoryShortText(category)}</Typography>
 
                 <Stack direction={"row"}
                        style={{...text, ...center, width: '80vh%', margin: '2vh', marginTop: '10vh', color: '#C9C9C9', whiteSpace: 'nowrap'}}>
@@ -104,7 +104,7 @@ const VotePage = ({category}: { category: string}) => {
                                                          initialSegment={frames} autoplay={false} loop={false}
               style={{position:'absolute',bottom: '0', width:'100%', height:'70vh'}}/>
                 <Button onClick={handleSubmit} variant="contained"
-                        sx={{borderRadius: 28, width: '70%', ...text, bottom:'10vh'}}>{translation.buttons.share}</Button>
+                        sx={{borderRadius: 28, width: '70%', ...text, bottom:'10vh', textTransform: 'none'}}>{translation.buttons.share}</Button>
             </div>
         </div>
     );

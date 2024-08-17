@@ -1,13 +1,19 @@
 import {translationType} from "../Types/Translations";
-import {currentLanguage, languages} from "./Language";
 import {busNumber} from "../Types/Consts";
+import {translation} from "./Language";
+import bubblesImgHe from '../icons/logosMap_he.png';
+import bubblesImgEn from '../icons/logosMap_en.png';
+import bubblesShareEn from '../icons/share_en.png';
+import bubblesShareHe from '../icons/share_he.png';
 
-const english : translationType = {
+
+export const english : translationType = {
+    style: { dir: 'ltr', startSide: 'left', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] },
     buttons: {no: "No", share: "Share", yes: "Yes"},
     categories: {
         air: {
             title: 'Air Quality',
-            shortTitle: 'Air',
+            shortTitle: '',
             min: 'Stuffy',
             max: 'Fresh',
         },
@@ -19,7 +25,7 @@ const english : translationType = {
         },
         ride: {
             title: 'Ride Comfort',
-            shortTitle: 'Ride',
+            shortTitle: '',
             min: 'Wild',
             max: 'Laid-back',
         },
@@ -54,14 +60,16 @@ const english : translationType = {
         title: ' Ride Experience on Bus Route ' + busNumber,
         subtitle: '',
         stations: {
-            start: 'Duke of York Square (Stop G)',
-            end: 'Parkgate Road (Stop BE)'
+            start: 'Duke of York Square\n(Stop G)',
+            end: 'Parkgate Road\n(Stop BE)'
         },
         feedback:
             {
                 positive: 'Positive feedback',
                 negative: 'Negative feedback'
-            }
+            },
+        img: bubblesImgEn,
+        share: bubblesShareEn
     },
     sharing: {
         title: 'Thanks for sharing! We\'ll take it from here',
@@ -70,7 +78,8 @@ const english : translationType = {
 
 }
 
-const hebrew : translationType = {
+export const hebrew : translationType = {
+    style: { dir: 'rtl', startSide: 'right', days: ['יום א', 'יום ב', 'יום ג', 'יום ד', 'יום ה', 'יום ו', 'יום ש'] },
     buttons: {no: "לא, סיימתי :)", share: "שתף", yes: "כן"},
     categories: {
         air: {
@@ -129,17 +138,18 @@ const hebrew : translationType = {
             {
                 positive: 'משוב חיובי',
                 negative: 'משוב שלילי'
-            }
+            },
+        img: bubblesImgHe,
+        share: bubblesShareHe
     },
     sharing: {
-        title: 'תודה על שיתוף החוויה!' +
+        title: 'תודה על שיתוף החוויה!' + '\n' +
             'אנחנו ניקח את זה מכאן',
         subtitle: 'תרצה לשתף במשהו נוסף?'
     }
 
 }
 
-export const translation = currentLanguage === languages.hebrew ? hebrew : english;
 
 const englishDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const hebrewDays = ['יום א', 'יום ב', 'יום ג', 'יום ד', 'יום ה', 'יום ו', 'יום ש']
@@ -148,9 +158,7 @@ export const getAverageDate = () =>
 {
     const currentDate = new Date();
 
-    const dayOfWeek = currentLanguage === languages.hebrew ?
-        hebrewDays[currentDate.getDay()] :
-        englishDays[currentDate.getDay()];
+    const dayOfWeek = translation.style.days[currentDate.getDay()];
     const date = currentDate.getDate();
     const month = currentDate.getMonth() + 1;
     const hour = currentDate.getHours();
@@ -167,13 +175,11 @@ export const getBubblesDate = () =>
 {
     const currentDate = new Date();
 
-    const dayOfWeek = currentLanguage === languages.hebrew ?
-        hebrewDays[currentDate.getDay()] :
-        englishDays[currentDate.getDay()];
+    const dayOfWeek = translation.style.days[currentDate.getDay()];
     const date = currentDate.getDate();
     const month = currentDate.getMonth() + 1;
     const hour = currentDate.getHours();
     const minutes = currentDate.getMinutes();
 
-    return `${dayOfWeek}' ${date}.${month} ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
+    return `${dayOfWeek} · ${date}.${month} · ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
 }

@@ -1,22 +1,22 @@
 import * as React from 'react';
 import {Button, Stack, Typography} from "@mui/material";
-import {center, fadeIn, pageHeader, subHeader, text} from "../Types/Styles";
+import {center, fadeIn, pageHeader, subHeader, text, votePageHeader} from "../Types/Styles";
 import { getCategoryIcon} from "../Types/ECategory";
 import { useNavigate} from "react-router-dom";
-import {translation} from "../Translation/texts";
+import {translation} from "../Translation/Language";
 
 const FinishPage = () => {
     const navigate = useNavigate();
     return (
         <div>
             <Stack style={{...fadeIn(0.5), marginTop: '7vh'}}>
-            <Typography style={{...pageHeader, textAlign:'center', right:'15%'}}>{translation.sharing.title}</Typography>
-            <Typography style={{...subHeader, textAlign:'center', right:'15%'}}>{translation.sharing.subtitle}</Typography>
-            <Stack direction={"row"} style={{...center, marginTop:'9vh'}}>
+            <Typography style={{...votePageHeader, textAlign:'center', width: '80%', right: '10%', left: '10%', position: 'relative'}}>{translation.sharing.title}</Typography>
+            <Typography style={{...subHeader, textAlign:'center', width: '80%', right: '10%', left: '10%', position: 'relative'}}>{translation.sharing.subtitle}</Typography>
+            <Stack direction={translation.style.startSide === 'left' ? 'row-reverse' : 'row'} style={{...center, marginTop:'9vh'}}>
                 <Button onClick={()=>{navigate('/');}} variant="contained"
-                        sx={{borderRadius: 28, width: '30%', ...text, margin:'1vh'}}>{translation.buttons.yes}</Button>
+                        sx={{borderRadius: 28, width: '30%', ...text, margin:'1vh', textTransform: 'none'}}>{translation.buttons.yes}</Button>
                 <Button onClick={()=>{navigate('/results');}} variant="contained"
-                        sx={{borderRadius: 28, width: '30%', ...text, margin:'1vh'}}>{translation.buttons.no}</Button>
+                        sx={{borderRadius: 28, width: '30%', ...text, margin:'1vh', textTransform: 'none'}}>{translation.buttons.no}</Button>
             </Stack>
 
         </Stack>

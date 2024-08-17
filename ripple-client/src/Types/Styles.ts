@@ -1,16 +1,20 @@
 import * as React from "react";
+import {translation} from "../Translation/Language";
 
 export const text = {
     fontFamily: "Suez One",
-    textAlign: 'right',
+    textAlign: translation.style.startSide,
+    direction: translation.style.dir,
+    whiteSpace: 'pre-line'
 } as React.CSSProperties;
 
-const rightPosition = {
-    direction: 'rtl',
+const sidePosition = {
+    direction: translation.style.dir,
     position: 'relative',
-    width: '70%',
+    // width: '70%',
     top: '5vh',
-    right: '5vh',
+    right: translation.style.startSide === 'right' ? '5vh' :'30%',
+    left: translation.style.startSide === 'left' ? '5vh' :'',
     // objectFit: 'cover'
     ...text
 } as React.CSSProperties;
@@ -19,14 +23,25 @@ export const pageHeader = {
     fontSize: '6vh',
     lineHeight: '1',
     zIndex: 10,
-    ...rightPosition
+    ...sidePosition
+} as React.CSSProperties;
+export const votePageHeader = {
+    color: '#393938',
+    fontSize: '6vh',
+    lineHeight: '1',
+    zIndex: 10,
+    right: translation.style.startSide === 'right' ? '3vh' :'',
+    left: translation.style.startSide === 'left' ? '3vh' :'',
+    ...text,
+    top: '5vh'
+    // ...sidePosition
 } as React.CSSProperties;
 export const resultsHeader = {
     color: '#ffffff',
     fontSize: '2.8vh',
     lineHeight: '1',
     zIndex: 10,
-    ...rightPosition,
+    ...sidePosition,
     width: '',
     right: ''
 } as React.CSSProperties;
@@ -36,7 +51,7 @@ export const subHeader = {
     lineHeight: '1.25',
     marginTop: '3vh',
     zIndex: 9,
-    ...rightPosition,
+    ...sidePosition,
 } as React.CSSProperties;
 
 export const fadeIn = (duration: any) => {
@@ -65,8 +80,8 @@ export const down = {
 
 export const iconSize = {
     width: '100%',
-    maxWidth: '120%',
-    maxHeight: '20vh',
+    maxWidth: '100%',
+    maxHeight: '18vh',
     minHeight: '15vh',
     minWidth: '90%',
     // height: '120%'

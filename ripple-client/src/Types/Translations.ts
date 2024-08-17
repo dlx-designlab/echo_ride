@@ -12,8 +12,9 @@ export type translationType =
                 {
                     positive: string,
                     negative: string
-                }
-
+                },
+            img: string,
+            share: string,
         }
         categories: {
             air: categoryType,
@@ -27,6 +28,11 @@ export type translationType =
             yes: string,
             no: string,
             share: string
+        },
+        style: {
+            dir: string,
+            startSide: string,
+            days: string[]
         }
     };
 

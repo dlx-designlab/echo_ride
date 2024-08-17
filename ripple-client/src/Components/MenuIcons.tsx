@@ -18,10 +18,10 @@ const MenuIcons = () => {
                 <MenuButton category={'driver'} style={{marginTop: '-5vh', marginRight: '1vh'}}/>
             </Grid>
             <Grid item xs={4}>
-                <MenuButton category={'safe'} style={{marginTop: '10vh', marginRight: '-4vh'}}/>
+                <MenuButton category={'safe'} style={{marginTop: '10vh', marginRight: '-3vh'}}/>
             </Grid>
             <Grid item xs={4}>
-                <MenuButton category={'ride'} style={{marginRight: '-5vh', marginLeft: '5vh', marginTop: '-5vh'}}/>
+                <MenuButton category={'ride'} style={{marginRight: '-3vh', marginLeft: '4vh', marginTop: '-5vh'}}/>
             </Grid>
         </Grid>
     );

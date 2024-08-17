@@ -16,7 +16,7 @@ import crowdedAnim from '../icons/crowded.json';
 import driverAnim from '../icons/driver.json';
 import rideAnim from '../icons/ride.json';
 import safeAnim from '../icons/safe.json';
-import {translation} from "../Translation/texts";
+import {translation} from "../Translation/Language";
 
 const Categories: Record<string, { title: string, shortTitle: string, range: [string, string], icon: string, emptyIcon: string, animation:any, color: string, center:[number, number] }> = {
     'driver': {
