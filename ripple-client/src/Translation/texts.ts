@@ -150,10 +150,6 @@ export const hebrew : translationType = {
 
 }
 
-
-const englishDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const hebrewDays = ['יום א', 'יום ב', 'יום ג', 'יום ד', 'יום ה', 'יום ו', 'יום ש']
-
 export const getAverageDate = () =>
 {
     const currentDate = new Date();

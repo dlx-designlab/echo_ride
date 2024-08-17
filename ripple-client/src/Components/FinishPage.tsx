@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Button, Stack, Typography} from "@mui/material";
-import {center, fadeIn, pageHeader, subHeader, text, votePageHeader} from "../Types/Styles";
+import {center, fadeIn, subHeader, text, votePageHeader} from "../Types/Styles";
 import { getCategoryIcon} from "../Types/ECategory";
 import { useNavigate} from "react-router-dom";
 import {translation} from "../Translation/Language";

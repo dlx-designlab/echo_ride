@@ -3,9 +3,9 @@ import {Button, IconButton, Slider, Stack, Typography} from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useRef, useState} from "react";
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
-import {getCategoryAnimation, getCategoryRange, getCategoryShortText, getCategoryText} from "../Types/ECategory";
+import {getCategoryAnimation, getCategoryRange, getCategoryShortText} from "../Types/ECategory";
 import {ArrowForward} from "@mui/icons-material";
-import {center, fadeIn, fadeInUp, pageHeader, text, votePageHeader} from "../Types/Styles";
+import {center, fadeIn, fadeInUp, text, votePageHeader} from "../Types/Styles";
 import {url} from "../Types/Consts";
 import {translation} from "../Translation/Language";
 

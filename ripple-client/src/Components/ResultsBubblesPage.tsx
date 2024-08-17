@@ -5,7 +5,6 @@ import {ECategory, getCategoryCenter, getCategoryIcon, getCategorySliderColor} f
 import {Slider, Stack, Typography} from "@mui/material";
 import {center, resultsHeader, subHeader, text} from "../Types/Styles";
 import OldBubbles from "./OldBubbles";
-import share from '../icons/share_he.png';
 import {getBubblesDate} from "../Translation/texts";
 import {translation} from "../Translation/Language";
 

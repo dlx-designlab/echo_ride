@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Slider, Stack, Typography, Grid} from "@mui/material";
+import {Slider, Typography, Grid} from "@mui/material";
 import {center, subHeader, text} from "../Types/Styles";
 import {
     getCategoryAnimation,
@@ -11,7 +11,6 @@ import Lottie from "lottie-react";
 
 const VoteAvg = ({category, value}: {category: string, value: number }) => {
     return (
-        // <Stack>
         <>
             <Grid item xs={3} style={{...text, right: '0', left: '0', width: '100%', color: '#ffffff', whiteSpace: 'nowrap', height:'14vh'}}>
             {/*<Stack direction={"row"}*/}
