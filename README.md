@@ -49,7 +49,7 @@ npm install
 # Run client 
 npm start
 ```
-When the App is running, you should change the IP in the file ```ripple/ripple-client/src/ip.js``` to your local machine IP.
+⚠️ IMPORTANT: When the App is running, you should change the IP in the file ```ripple/ripple-client/src/ip.js``` to your local machine IP.
 
 If you're using Windows, just run ```ip.bat``` file.
 
