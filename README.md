@@ -1,4 +1,4 @@
-# Echo Ride App
+# 🚌 🫧 Echo Ride App
 
 An experimental interactive app for passenger reports while using public transportation.
 
