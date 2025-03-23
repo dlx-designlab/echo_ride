@@ -11,13 +11,11 @@ An experimental interactive app for passenger reports while using public transpo
 
 ## Installation
 
-In order to run this app, you should install **Node** on your machine.
-You should run the Front and Back ends to use the app.
-
-And then clone the Repo:
-```
-git clone https://github.com/guybloo/ripple.git
-```
+In order to run this app, you need: 
+* Install **NodeJS v16** on your machine.
+* Clone this repo: ```git clone https://github.com/dlx-designlab/echo_ride.git```
+* Run the Front and Back ends
+* Access the app from a browser
 
 ## Backend
 
@@ -50,9 +48,10 @@ npm install
 npm start
 ```
 ⚠️ IMPORTANT NOTES: 
-1. When the App is running, you should change the IP in the file ```../ripple-client/src/ip.js``` to your local machine IP.  
-   If you're using Windows, just run ```ip.bat``` file.
+1. Update the IP in this file ```../ripple-client/src/ip.js``` to your local machine IP.
+   If you're using Windows, you can just run the ```ip.bat``` file.
 2. When running on Github Codespaces you need to update ```../ripple-client/src/Types/Consts.js``` as described in the comments in file
+3. It's recommneded to use Node v16 to avoid errors when running the client: ```nvm use 16```
 
 ## Navigation
 Navigate to ```http://localhost:3000``` or ```http://YOUR-IP:3000``` in order to open the main screen.
