@@ -49,9 +49,10 @@ npm install
 # Run client 
 npm start
 ```
-⚠️ IMPORTANT: When the App is running, you should change the IP in the file ```ripple/ripple-client/src/ip.js``` to your local machine IP.
-
-If you're using Windows, just run ```ip.bat``` file.
+⚠️ IMPORTANT NOTES: 
+1. When the App is running, you should change the IP in the file ```../ripple-client/src/ip.js``` to your local machine IP.  
+   If you're using Windows, just run ```ip.bat``` file.
+2. When running on Github Codespaces you need to update ```../ripple-client/src/Types/Consts.js``` as described in the comments in file
 
 ## Navigation
 Navigate to ```http://localhost:3000``` or ```http://YOUR-IP:3000``` in order to open the main screen.
